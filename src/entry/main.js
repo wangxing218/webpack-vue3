@@ -9,7 +9,7 @@ import '@/css/home.scss'
 
 let app = createApp(App)
 app.use(router)
-app.config.productionTip = false
+app.config.productionTip = true
 
 import { Button } from 'vant'
 app.use(Button)
