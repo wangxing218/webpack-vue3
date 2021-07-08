@@ -18,3 +18,15 @@ api.post(
   },
   true,
 )
+
+// 获取列表数据
+api.get('/list', (ctx) => {
+  ctx.body = resp.mock({
+    'list|10': [
+      {
+        id: '@id',
+        name: '@cname',
+      },
+    ],
+  })
+})

@@ -20,7 +20,7 @@ const CssLoader = [
     : {
         loader: MiniCssExtractPlugin.loader,
         options: {
-          publicPath,
+          publicPath: '../../',
         },
       },
   'css-loader',
@@ -179,9 +179,9 @@ const config = {
   },
   resolve: {
     alias: {
-      '@/': root('src'),
-      '@/image': root('src/asset/image'),
-      '@/css': root('src/asset/css'),
+      '@/': [root('src')],
+      '@/image': [root('src/asset/image')],
+      '@/css': [root('src/asset/css')],
     },
   },
 }

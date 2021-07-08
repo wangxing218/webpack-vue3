@@ -1,6 +1,6 @@
 <template>
   <transition name="mea-fade">
-    <div v-show="show" class="mea-toast"   :style="style">
+    <div v-show="show" class="mea-toast" :style="style">
       <div class="mea-toast-message">
         {{ content }}
       </div>
@@ -14,7 +14,7 @@ export default {
       show: false,
       content: '',
       duration: 2000,
-      style: {}
+      style: {},
     }
   },
 }
