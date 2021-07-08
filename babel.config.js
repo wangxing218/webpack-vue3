@@ -1,17 +1,12 @@
-/***
- * @file:
- * @author: wangxing
- * @Date: 2021-07-07 20:36:04
- */
 module.exports = {
   presets: [
     [
-      '@babel/preset-env'
+      '@babel/preset-env',
       // {
       //   useBuiltIns: "usage",
       //   corejs: 3
       // }
-    ]
+    ],
   ],
   plugins: [
     '@babel/plugin-transform-runtime',
@@ -21,8 +16,8 @@ module.exports = {
       {
         libraryName: 'vant',
         libraryDirectory: 'es',
-        style: true
-      }
-    ]
-  ]
+        style: true,
+      },
+    ],
+  ],
 }

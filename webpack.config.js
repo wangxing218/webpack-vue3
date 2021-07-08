@@ -18,11 +18,11 @@ const CssLoader = [
   _DEV_
     ? 'style-loader'
     : {
-      loader: MiniCssExtractPlugin.loader,
-      options: {
-        publicPath,
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          publicPath,
+        },
       },
-    },
   'css-loader',
   {
     loader: 'postcss-loader',
@@ -73,10 +73,9 @@ const config = {
     injectClient: true,
     disableHostCheck: true,
     clientLogLevel: 'error',
-    historyApiFallback: false,
+    historyApiFallback: true,
     openPage: publicPath,
-    // doc & proxy
-    after:
+    before:
       _DEV_ &&
       webpackExt({
         dir: root('mock'),
