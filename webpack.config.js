@@ -45,11 +45,11 @@ const CssLoader = [
  */
 const config = {
   mode: _DEV_ ? 'development' : 'production',
-  devtool: _DEV_ ? 'eval-source-map' : false,
+  devtool: _DEV_ && 'eval-source-map',
   stats: _DEV_ ? 'minimal' : 'normal',
   target: ['web', 'es6'],
   entry: {
-    home: root('src/entry/main'),
+    home: root('src/main'),
   },
   output: {
     path: root('dist'),
@@ -74,13 +74,13 @@ const config = {
     disableHostCheck: true,
     clientLogLevel: 'error',
     historyApiFallback: true,
-    openPage: publicPath,
     before:
       _DEV_ &&
       webpackExt({
         dir: root('mock'),
         prefix: '/api',
         proxy: 'http://m.91qycl.com',
+        crossDomain: 'http://192.168.16.13:8081',
       }),
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -123,8 +123,7 @@ const config = {
     }),
     // make html
     new HtmlWebpackPlugin({
-      template: root('src/entry/index.html'),
-      filename: 'index.html',
+      template: root('src/index.html'),
     }),
     // css to file
     new MiniCssExtractPlugin({
@@ -144,9 +143,22 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/i,
+        test: /\.(ts|tsx)$/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/],
+            },
+          },
+        ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/i,
         loader: 'babel-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.vue$/i,
@@ -159,7 +171,7 @@ const config = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: '@import "@/css/_var";',
+              additionalData: '@import "@css/_var";',
             },
           },
         ],
@@ -179,10 +191,11 @@ const config = {
   },
   resolve: {
     alias: {
-      '@/': [root('src')],
-      '@/image': [root('src/asset/image')],
-      '@/css': [root('src/asset/css')],
+      '@': root('src'),
+      '@image': root('src/asset/image'),
+      '@css': root('src/asset/css'),
     },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 }
 

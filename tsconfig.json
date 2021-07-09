@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@image/*": ["src/asset/image/*"],
+      "@css/*": ["src/asset/css/*"]
+    },
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "noImplicitAny": false
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*"]
+}

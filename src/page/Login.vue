@@ -4,14 +4,13 @@
       {{ name }}
     </div>
     <van-button type="primary" :name="'wefwe'" :aebb="false" :func="12312" @click="handle">
-      Loewewgin
+      我的来了
     </van-button>
   </div>
 </template>
 
-<script>
-import nprogrss from 'nprogress'
-import 'nprogress/nprogress.css'
+<script lang="ts">
+import { get } from '../service/ajax'
 export default {
   name: 'Login',
   components: {},
@@ -23,13 +22,9 @@ export default {
   computed: {},
   mounted() {},
   methods: {
-    handle() {
-      nprogrss.start(0.6)
-      this.name = '点击了'
-      console.log('this: ')
-      setTimeout(() => {
-        nprogrss.done()
-      }, 3000)
+    async handle() {
+      const res = await get('/list', {}, {})
+      console.log(res)
     },
   },
 }

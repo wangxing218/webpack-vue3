@@ -4,11 +4,11 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
+var a = 1
 export default {
   setup() {
     const state = reactive({
       msg: 'Hello App',
-      hello: '这个好',
     })
     return {
       ...toRefs(state),

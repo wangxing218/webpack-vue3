@@ -27,12 +27,12 @@ var cookie = {
     if (typeof opt.age == 'number') {
       time = opt.age * 1000
     } else {
-      time = parseInt(opt.age) * dict[opt.age.match(/\w$/)[0]]
+      time = parseInt(opt.age) * dict[(opt.age as any).match(/\w$/)[0]]
     }
     var exp = new Date(new Date().getTime() + time)
     var cookieArr = [name + '=' + escape(encodeURIComponent(value))]
 
-    time && cookieArr.push('expires=' + exp.toGMTString())
+    time && cookieArr.push('expires=' + exp.toUTCString())
     opt.path && cookieArr.push('path=' + opt.path)
     opt.domain && cookieArr.push('domain=' + opt.domain)
 
@@ -43,7 +43,7 @@ var cookie = {
     var exp = new Date()
     exp.setTime(exp.getTime() - 1)
     var cval = this.get(name)
-    if (cval != null) document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString()
+    if (cval != null) document.cookie = name + '=' + cval + ';expires=' + exp.toUTCString()
   },
   clear() {
     var keys = document.cookie.match(/[^ =;]+(?==)/g)

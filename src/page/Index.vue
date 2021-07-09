@@ -11,19 +11,15 @@
     </div>
   </div>
 </template>
-<script>
+
+<script lang="ts">
 export default {
-  components: {},
-  data() {
+  setup() {
     return {
-      name: '这个来了就是的',
+      name: '24',
     }
   },
-  computed: {},
-  mounted() {
-    this.dataList
-  },
-  methods: {},
 }
 </script>
+
 <style lang="scss" scoped></style>

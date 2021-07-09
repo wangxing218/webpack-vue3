@@ -4,14 +4,13 @@
  * @Date: 2021-06-16 18:32:50
  */
 // prod env config
-
 const config = {
   inQiankun: !!window.__POWERED_BY_QIANKUN__,
   apiUrl: '/api',
   env: 'prod',
 }
 
-const env = {}
+const env: any = {}
 
 // dev env config
 env.dev = {
@@ -23,6 +22,6 @@ env.test = {
   env: 'testing',
 }
 
-Object.assign(config, env[process.env.APP_ENV] || {})
+Object.assign(config, env[(process as any).env.APP_ENV] || {})
 
 export default config

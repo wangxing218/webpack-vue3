@@ -1,22 +1,21 @@
 // import "core-js/features/promise";
 // import config from './config'
 import { createApp } from 'vue'
-import App from './App.vue'
+import App from './page/App.vue'
 import router from './router'
 // import store from "./store";
-import '@/css/common.scss'
-import '@/css/home.scss'
+import '@css/common.scss'
+import '@css/home.scss'
 
 let app = createApp(App)
 app.use(router)
-app.config.productionTip = true
 
 import { Button } from 'vant'
 app.use(Button)
 
 app.mount('#app')
 
-// let instance;
+// let instance;WW
 
 // function render(props) {
 //   instance = new Vue({

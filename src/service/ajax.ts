@@ -1,11 +1,16 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import { Toast } from 'vant'
-import config from '../entry/config'
+import config from '../config'
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
 nprogress.configure({
   showSpinner: false,
 })
+
+interface ExtOptions extends AxiosRequestConfig {
+  nprogress?: boolean
+  error?: Function
+}
 
 // 通用配置
 const instance = axios.create({
@@ -17,7 +22,7 @@ const instance = axios.create({
  * ajax请求
  * @param {*} options
  */
-export async function ajax(options = {}) {
+export async function ajax(options: ExtOptions = {}) {
   if (options.nprogress === undefined) {
     nprogress.start()
     nprogress.inc(0.6)
@@ -42,7 +47,7 @@ export async function ajax(options = {}) {
   function handleError(err) {
     if (options.error === undefined) {
       Toast(err.msg)
-    } else if (options.error === 'function') {
+    } else if (typeof options.error === 'function') {
       options.error(err)
     }
     return Promise.reject(err)

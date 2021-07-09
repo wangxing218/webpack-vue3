@@ -31,14 +31,14 @@ const Url = {
   // 将json序列化为url请求体,从jquery中剥离出来的。
   encode: function (obj) {
     var prefix,
-      res = []
+      res: string[] = []
 
     function add(key, value) {
       res[res.length] =
         encodeURIComponent(key) + '=' + encodeURIComponent(value == null ? '' : value)
     }
 
-    function buildParams(prefix, obj) {
+    function buildParams(prefix, obj?) {
       var name
       var rbracket = /\[\]$/
       if (Array.isArray(obj)) {
@@ -54,7 +54,7 @@ const Url = {
         })
       } else if (typeof obj === 'object') {
         for (name in obj) {
-          buildParams(prefix + '[' + name + ']', obj[name], add)
+          buildParams(prefix + '[' + name + ']', obj[name])
         }
       } else {
         add(prefix, obj)
