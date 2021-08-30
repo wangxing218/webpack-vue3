@@ -2,20 +2,7 @@
   <router-view />
 </template>
 
-<script>
-import { reactive, toRefs } from 'vue'
-var a = 1
-export default {
-  setup() {
-    const state = reactive({
-      msg: 'Hello App',
-    })
-    return {
-      ...toRefs(state),
-    }
-  },
-}
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .box {

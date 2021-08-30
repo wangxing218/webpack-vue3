@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../page/Index.vue'
 import Home from '../page/Home.vue'
 import Login from '../page/Login.vue'
-import Resize from '../page/Resize.vue'
 
 const router = createRouter({
   history: createWebHistory('/'),
@@ -21,11 +20,6 @@ const router = createRouter({
           path: '/login',
           name: 'Login',
           component: Login,
-        },
-        {
-          path: '/resize',
-          name: 'Resize',
-          component: Resize,
         },
       ],
     },
